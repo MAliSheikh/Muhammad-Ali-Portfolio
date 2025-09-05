@@ -202,13 +202,8 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.section-title, .timeline-item, .project-card, .education-card').forEach(el => {
+document.querySelectorAll('.section-title, .timeline-item, .project-card, .education-card, .skills').forEach(el => {
     observer.observe(el);
-});
-
-// Observe sections
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
 });
 
 // Animate Skill Bars
