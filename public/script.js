@@ -325,3 +325,68 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Add this to your existing script.js file
+
+// Create cursor elements
+const cursorDot = document.createElement('div');
+cursorDot.className = 'cursor-dot';
+const cursorOutline = document.createElement('div');
+cursorOutline.className = 'cursor-outline';
+
+// Append to body
+document.body.appendChild(cursorDot);
+document.body.appendChild(cursorOutline);
+
+// Mouse move event
+document.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    // Animate dot to follow cursor exactly
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+
+    // Animate outline to follow cursor with slight delay
+    cursorOutline.style.left = `${posX - 13}px`;
+    cursorOutline.style.top = `${posY - 13}px`;
+});
+
+// Click animation
+document.addEventListener('mousedown', () => {
+    cursorDot.classList.add('active');
+    cursorOutline.classList.add('active');
+});
+
+document.addEventListener('mouseup', () => {
+    cursorDot.classList.remove('active');
+    cursorOutline.classList.remove('active');
+});
+
+// Hover animation for clickable elements
+const clickables = document.querySelectorAll('a, button, .btn, .nav-link');
+clickables.forEach((element) => {
+    element.addEventListener('mouseover', () => {
+        cursorDot.classList.add('active');
+        cursorOutline.classList.add('active');
+    });
+    
+    element.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('active');
+        cursorOutline.classList.remove('active');
+    });
+});
+
+// Add ripple effect on click
+document.addEventListener('click', (e) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    ripple.style.left = `${e.clientX}px`;
+    ripple.style.top = `${e.clientY}px`;
+    document.body.appendChild(ripple);
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+        ripple.remove();
+    }, 1000);
+});

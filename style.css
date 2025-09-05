@@ -957,3 +957,76 @@ section {
 .whatsapp-button i {
     font-size: 1.5rem;
 }
+
+.cursor-dot {
+    width: 5px;
+    height: 5px;
+    background-color: var(--main-color);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+}
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--main-color);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.25s ease;
+    opacity: 0.5;
+}
+
+.cursor-dot.active {
+    transform: scale(2);
+}
+
+.cursor-outline.active {
+    transform: scale(1.5);
+}
+
+/* Hide default cursor when hovering over clickable elements */
+a, button, .btn {
+    cursor: none;
+}
+
+/* Hide cursor elements on mobile devices */
+@media (max-width: 768px) {
+    .cursor-dot, .cursor-outline {
+        display: none;
+    }
+}
+
+
+.ripple {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    background: rgba(var(--main-color-rgb), 0.2);
+    animation: rippleEffect 1s linear;
+    z-index: 9997;
+}
+
+@keyframes rippleEffect {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 0.5;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+
+/* Add this CSS variable to your root */
+:root {
+    /* ...existing variables... */
+    --main-color-rgb: 0, 157, 255; /* Adjust these RGB values to match your main color */
+}
