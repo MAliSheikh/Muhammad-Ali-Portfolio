@@ -267,7 +267,8 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Contact Form
+// Contact Form - Commented out as there is no form with class 'contact-form' in index.html
+/*
 document.querySelector('.contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -295,6 +296,7 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
     // Reset form
     this.reset();
 });
+*/
 
 // Add active class to nav links
 const navLinks = document.querySelectorAll('.nav-link');
