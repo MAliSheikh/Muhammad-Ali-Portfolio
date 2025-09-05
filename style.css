@@ -401,6 +401,7 @@ section {
     background: var(--card-bg);
     border-radius: 4px;
     overflow: hidden;
+    transition: transform 0.1s ease, box-shadow 0.4s ease; /* Added transition for transform and box-shadow */
 }
 
 .skill-progress {
@@ -409,6 +410,32 @@ section {
     border-radius: 4px;
     width: 0;
     transition: width 1.5s ease;
+}
+
+.skill-item:hover .skill-bar {
+    transform: scaleY(1.2);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.7);
+}
+
+.skill-progress {
+    position: relative; /* Needed for pseudo-element positioning */
+}
+
+.skill-progress::after {
+    content: attr(data-width); /* Display the data-width attribute */
+    position: absolute;
+    top: -25px; /* Position above the bar */
+    right: 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease, top 0.3s ease;
+}
+
+.skill-item:hover .skill-progress::after {
+    opacity: 1; /* Show on hover */
+    top: -30px; /* Slight upward movement on hover */
 }
 
 /* Experience Section */
